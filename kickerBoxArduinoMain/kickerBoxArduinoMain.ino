@@ -128,20 +128,20 @@ void loop()
 
 
   lcd.setCursor(0,0);
-  lcd.print("HELLO           ");
+  lcd.print("     HELLO");
   lcd.setCursor(0,1);
-  lcd.print("WORLD           ");
+  lcd.print("     WORLD");
   
-  // //TODO Switch Serial (Is it possible to use both simultaneously?)
-//  Serial.print("Button ");
-//  Serial.print(clearEstop);
-//  Serial.print(" Mode ");
-//  Serial.print(curMode);
-//  Serial.print(" The Slider is ");
-//  Serial.print(rawSlider);
-//  Serial.print(" The Motor is ");
-//  Serial.print(percentMotor);
-//  Serial.print(" The Angle Is "); 
-//  Serial.print(mcOutput);
-//  Serial.println(" ");
+  
+  Serial.print("Button ");
+  Serial.print(clearEstop);
+  Serial.print(" Mode ");
+  Serial.print(curMode);
+  Serial.print(" The Slider is ");
+  Serial.print(rawSlider);
+  Serial.print(" The Motor is ");
+  Serial.print(percentMotor);
+  Serial.print(" The Angle Is "); 
+  Serial.print(mcOutput);
+  Serial.println(" ");
  }
