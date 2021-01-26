@@ -5,7 +5,7 @@
 Servo motorController;
 
 float mcOutput = 0;
-int sliderPort = A0;
+int sliderPort = A1;
 int rawSlider = 512;
 float percentMotor = 0;
 float deadBandLow = 492;
@@ -126,11 +126,31 @@ void loop()
  
   motorController.write(mcOutput);
 
-
+  //Print first line (line 0)
   lcd.setCursor(0,0);
-  lcd.print("     HELLO");
+  lcd.print("Md: ");
+  lcd.setCursor(3,0);
+  switch(curMode){
+    case estop:
+        lcd.print("ESTP  ");
+    break;
+    case paused:
+        lcd.print("PAUS  ");
+    break;
+    case running:
+        lcd.print("RUNN   ");
+    break;
+    default:
+        lcd.print("ERRO  ");  
+  }
+
+  //Print second Line (line 1)
   lcd.setCursor(0,1);
-  lcd.print("     WORLD");
+  lcd.print("iP:");
+  lcd.print( 100*((float)rawSlider/1024),1);
+  lcd.setCursor(8,1);
+  lcd.print("oP:");
+  lcd.print(percentMotor,1);
   
   
   Serial.print("Button ");
@@ -141,7 +161,7 @@ void loop()
   Serial.print(rawSlider);
   Serial.print(" The Motor is ");
   Serial.print(percentMotor);
-  Serial.print(" The Angle Is "); 
+  Serial.print(" The   Is "); 
   Serial.print(mcOutput);
   Serial.println(" ");
  }
