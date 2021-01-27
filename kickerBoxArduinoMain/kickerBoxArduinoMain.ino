@@ -5,7 +5,7 @@
 Servo motorController;
 
 float mcOutput = 0;
-int sliderPort = A1;
+int sliderPort = A0;
 int rawSlider = 512;
 float percentMotor = 0;
 float deadBandLow = 492;
@@ -126,42 +126,22 @@ void loop()
  
   motorController.write(mcOutput);
 
-  //Print first line (line 0)
-  lcd.setCursor(0,0);
-  lcd.print("Md: ");
-  lcd.setCursor(3,0);
-  switch(curMode){
-    case estop:
-        lcd.print("ESTP  ");
-    break;
-    case paused:
-        lcd.print("PAUS  ");
-    break;
-    case running:
-        lcd.print("RUNN   ");
-    break;
-    default:
-        lcd.print("ERRO  ");  
-  }
 
-  //Print second Line (line 1)
+  lcd.setCursor(0,0);
+  lcd.print("HELLO           ");
   lcd.setCursor(0,1);
-  lcd.print("iP:");
-  lcd.print( 100*((float)rawSlider/1024),1);
-  lcd.setCursor(8,1);
-  lcd.print("oP:");
-  lcd.print(percentMotor,1);
+  lcd.print("WORLD           ");
   
-  
-  Serial.print("Button ");
-  Serial.print(clearEstop);
-  Serial.print(" Mode ");
-  Serial.print(curMode);
-  Serial.print(" The Slider is ");
-  Serial.print(rawSlider);
-  Serial.print(" The Motor is ");
-  Serial.print(percentMotor);
-  Serial.print(" The   Is "); 
-  Serial.print(mcOutput);
-  Serial.println(" ");
+  // //TODO Switch Serial (Is it possible to use both simultaneously?)
+//  Serial.print("Button ");
+//  Serial.print(clearEstop);
+//  Serial.print(" Mode ");
+//  Serial.print(curMode);
+//  Serial.print(" The Slider is ");
+//  Serial.print(rawSlider);
+//  Serial.print(" The Motor is ");
+//  Serial.print(percentMotor);
+//  Serial.print(" The Angle Is "); 
+//  Serial.print(mcOutput);
+//  Serial.println(" ");
  }
